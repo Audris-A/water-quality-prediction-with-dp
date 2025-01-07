@@ -1,0 +1,46 @@
+data_colums:
+  x: ['Temp', 'TOC', 'Turbidity', 'pH', 'ORP', 'Conductivity', 'DoW', 'hour', 'workhour', 'workday']
+  y: ['Normal','Anomaly']
+data_paths:
+  data_train: '../../data/default_data/data_train.csv'
+  data_test: '../../data/default_data/data_test.csv'
+
+  # The program loops through the datasets with the according level of privacy.
+  dp_dataset_above_1: "../../data/dp_data_for_training/sensor_data_with_gaussian_noise_eps_{}.csv" 
+  dp_dataset_below_1: "../../data/dp_data_for_training/sensor_data_with_gaussian_noise_eps_{}.csv"
+log_paths:
+  dataset_default_clipping: "logs/dataset_default_clip/"
+  dataset_opt_clipping: "logs/dataset_opt_clip/"
+  optimizer_default_clipping: "logs/optimizer_default_clipping/"
+  optimizer_opt_clipping: "logs/specific_clipping/"
+
+  clipping_search: "logs/clipping_search/"
+  clip_avg: "logs/clipping_search/avg/"
+  lr_sweep: "logs/lr_sweep/"
+data:
+  sep: ";"
+models:
+  model_ids: [1, 2, 3, 4]
+  #model_ids: [2, 3, 4]
+  #model_ids: [4]
+training_parameters:
+  epochs: 100
+  batch_size: 128
+  num_classes: 2
+  learning_rate: 0.001
+  patience_val: 10
+
+  # pyyaml doesn't support e notation for decimal numbers
+  clipping_norms: [0, 0.0000001, 0.0000001, 0.000001, 0.000001]
+
+  # Choose the appropriate noise configuration. The noise multiplier values were calculated using the Google's differential-privacy RdpAccountant.
+  #  For 100 epochs. For epsilon 0.1 - 0.9 with 0.1 epsilon step and 1 - 10 with 1 epsilon step
+  noise: [4, 2.1323, 1.6385, 1.3941, 1.2415, 1.1349, 1.0549, 0.9923, 0.9414, 0.8992, 0.6832, 0.5961, 0.5479, 0.5165, 0.4941, 0.477, 0.4632, 0.4518, 0.442]
+
+  #  For 1000 epochs. For epsilon 0.1 - 0.9 with 0.1 epsilon step and 1 - 10 with 1 epsilon step
+  #noise: [12.5, 6.2917, 4.3161, 3.3182, 2.7176, 2.3177, 2.0332, 1.821, 1.6572, 1.5271, 0.9615, 0.7834, 0.6962, 0.644, 0.6088, 0.5831, 0.5634, 0.5475, 0.5344]
+search_parameters:
+  clip_norms: [100, 10, 1.5, 0.1, 0.01, 0.001, 0.0001, 0.00008, 0.00005, 0.00001, 0.000005, 0.000001]
+  clipping_runs: 10
+  learning_rate_start: 10 # start of the log step
+  learning_rate_range: 10 # log step range 
