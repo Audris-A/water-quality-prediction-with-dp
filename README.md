@@ -7,4 +7,6 @@ The project holds the following subprojects:
  
  2) `FL_with_model_2` - the federated learning implementation using the 2nd model which was the best performing model from the previous sub project tests. Here the idea is to partition the dataset into 4 parts and launch a FL training with four clients with each of these parts respectively. In addition, three DP stages can be chosen (0 - for epsilon < 1, 1 - for epsilon < 5, 2 - for epsilon < 10).
 
+ 3) `dp_dataset_generation` - the generation of differentially private datasets for input level training for the respective epsilon values.
+
  3) `??` - the inital data preprocesing and augmentation.
