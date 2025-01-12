@@ -195,4 +195,4 @@ for k in range(9,10):
         print(sensor["name"] + whitespaces,"=",avg_value)
     
     # Save the data with Gaussian noise for each epsilon config
-    save_noisy_dataset_in_csv("sensor_data_with_gaussian_noise_eps_{}.csv".format(current_epsilon))
+    save_noisy_dataset_in_csv("../../data/dp_data_for_training/sensor_data_with_gaussian_noise_eps_{}.csv".format(current_epsilon))
