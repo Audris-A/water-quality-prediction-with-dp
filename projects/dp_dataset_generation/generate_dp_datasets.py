@@ -8,7 +8,7 @@ import copy
 data_folder = "../../data/default_data/"
 
 # Folder to copy the DP data to
-dp_folder = "../../data/default_data/dp_data_for_training/"
+dp_folder = "../../data/dp_data_for_training/"
 
 data_size = None
 
