@@ -1,6 +1,7 @@
 # Differential privacy application in water quality prediction
 
 This is the source code for the article "Application of differential privacy to sensor data in water quality monitoring task" published in the journal "Ecological Informatics"
+
 The article is available here: https://doi.org/10.1016/j.ecoinf.2025.103019
 
 The project holds the following subprojects:
